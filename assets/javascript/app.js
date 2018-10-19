@@ -61,8 +61,8 @@ $(document).ready(function() {
     var q3 = {
         q: "What is a Chupacabra?",
         a1: "A blood sucking creature that lives in Puerto Rico.",
-        a2: "Ted Cruz's interior after he sheds his outer skin.",
-        a3: "A goat that has grown extra eyes all around it's skull and shrieks on the hillside at night.",
+        a2: "Ted Cruz's interior after he sheds his outer scales and plastiskin.",
+        a3: "A goat that has grown extra eyes all around it's skull and shrieks on the hilltop at midnight.",
         a4: "A guy who films himself giving pillows to people then starting a pillow fight.",
         check: [true, false, false, false],
         answer: "1. It was named that by a comedian in 1995."
@@ -112,8 +112,8 @@ $(document).ready(function() {
         q: "A Pixiu is a ______ from chinese mythology?",
         a1: "Winged lion that protects practicioners of Feng Shui.",
         a2: "Black Cat that can walk between worlds.",
-        a3: "General's loyal battle rabbit",
-        a4: "Tall set of empty clothes that follows behind merchants that cheat when they leave town and englufs them",
+        a3: "General from ancient time's loyal battle rabbit",
+        a4: "Tall set of empty clothes that follows behind merchants that cheat customers when they leave town and englufs them",
         check: [true, false, false, false],
         answer: "1. They are considered suspicious creatures of good fortune."
     };
@@ -130,11 +130,11 @@ $(document).ready(function() {
 
     var q10 = {
         q: "What are the brightly colored statues of fantastical creatures in Oaxaca called?",
-        a1: "Alebrije",
-        a2: "Benedict Cumberbatch",
+        a1: "Benedict Cumberbatch",
+        a2: "Alebrije",
         a3: "Illuminato",
         a4: "Coco",
-        check: [true, false, false, false],
+        check: [false, true, false, false],
         answer: "1. These statues became popular in parades and galleries in the 1930s."
     };
 
