@@ -16,10 +16,10 @@ $(document).ready(function () {
     }
 
     var timer = {
-        time: 30,
+        time: 15,
 
         reset: function () {
-            this.time = 30;
+            this.time = 15;
             $('.timer').html('<h2>' + timer.time + ' seconds remaining!</h2>');
         },
 
@@ -37,14 +37,14 @@ $(document).ready(function () {
                 $('.timer').html('<h2>' + timer.time + ' seconds remaining!</h2>');
             }
             else {
-                //wrong answer function here
+                outOfTime();
                 numberAnswered++;
                 timer.reset();
                 if (numberAnswered < questionA.length) {
-                    //load next question
+                    getQuestion(questionChoice)
                 } else {
                     $('.answer').hide();
-                    //show final score
+                    endScreen();
                 }
             }
         }
@@ -173,13 +173,6 @@ $(document).ready(function () {
         $("#buttond").text(questionA[questionChoice].a4).show();
     }
 
-    //function checkAnswer() {
-    //    $(".answer").on('click', function () {
-    //        numberAnswered++;
-    //        (".answer")
-    //    })
-    //}
-
     function rightAnswer() {
         numberCorrect++;
         alert('CORRECT! ' + questionA[numberAnswered].answer);
@@ -188,6 +181,11 @@ $(document).ready(function () {
     function wrongAnswer() {
         numberWrong++;
         alert('INCORRECT. The correct answer was: ' + questionA[numberAnswered].answer);
+    }
+
+    function outOfTime() {
+        numberWrong++;
+        alert("TIME'S UP! The correct answer was: " + questionA[numberAnswered].answer);
     }
 
     function endScreen() {
