@@ -7,7 +7,7 @@ $(document).ready(function () {
     function setup() {
         numberAnswered = 0;
         $('.answer').hide();
-        $('.question').append('<button id="startButton"> TriviaTime! </button>');
+        $('.question').append('<button type="button" class ="btn btn-block" id="startButton"> Trivia Time! </button>');
         $('#startButton').on('click', function() {
             $(this).hide();
             timer.start();
