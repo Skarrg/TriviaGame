@@ -125,8 +125,8 @@ $(document).ready(function () {
         q: "A Pixiu is a ______ from chinese mythology?",
         a1: "Winged lion that protects practicioners of Feng Shui.",
         a2: "Black Cat that can walk between worlds.",
-        a3: "General from ancient time's loyal battle rabbit",
-        a4: "Tall set of empty clothes that follows behind merchants that cheat customers when they leave town and englufs them",
+        a3: "General from ancient time's loyal battle rabbit.",
+        a4: "Tall set of empty clothes that follows behind merchants that cheat customers and engulfs them.",
         check: [true, false, false, false],
         answer: "1. They are considered suspicious creatures of good fortune."
     };
