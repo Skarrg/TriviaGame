@@ -1,26 +1,39 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var numberAnswered = 0;
     var numberCorrect = 0;
     var numberWrong = 0;
+    var answerChosen ='';
+
+    function setup() {
+        numberAnswered = 0;
+        $('.answer').hide();
+        $('.question').append('<button id="startButton"> TriviaTime! </button>');
+        $('#startButton').on('click', function() {
+            $(this).hide();
+            timer.start();
+            getQuestion(numberAnswered);
+        })
+    }
+
     var timer = {
         time: 30,
 
-        reset: function() {
+        reset: function () {
             this.time = 30;
             $('.timer').html('<h2>' + timer.time + ' seconds remaining!</h2>');
         },
 
-        start: function() {
+        start: function () {
             counter = setInterval(timer.count, 1000);
         },
 
-        stop: function() {
+        stop: function () {
             clearInterval(counter);
         },
 
-        count: function() {
+        count: function () {
             timer.time--;
-            if(timer.time >= 0) {
+            if (timer.time >= 0) {
                 $('.timer').html('<h2>' + timer.time + ' seconds remaining!</h2>');
             }
             else {
@@ -37,7 +50,7 @@ $(document).ready(function() {
         }
     };
 
-    var questionA = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11];
+
     var q1 = {
         q: "What is NOT a common alternate name for Bigfoot?",
         a1: "Sasquatch",
@@ -135,7 +148,7 @@ $(document).ready(function() {
         a3: "Illuminato",
         a4: "Coco",
         check: [false, true, false, false],
-        answer: "1. These statues became popular in parades and galleries in the 1930s."
+        answer: "2. These statues became popular in parades and galleries in the 1930s."
     };
 
     var q11 = {
@@ -144,7 +157,97 @@ $(document).ready(function() {
         a2: "It is a giant hand that emerges from the ground.",
         a3: "It has chicken legs.",
         a4: "The walls are filled with the hearts of stillborn children",
-        check: [false, false, false, true],
+        check: [false, false, true, false],
         answer: "3. She also flies around in a mortar wielding a pestle. Good aesthetic."
     };
-})
+
+    var questionA = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11];
+
+    function getQuestion(questionChoice) {
+        timer.reset();
+        
+        $(".question").html("<h3>" + questionA[questionChoice].q + "</h3>");
+        $("#buttona").text(questionA[questionChoice].a1).show();
+        $("#buttonb").text(questionA[questionChoice].a2).show();
+        $("#buttonc").text(questionA[questionChoice].a3).show();
+        $("#buttond").text(questionA[questionChoice].a4).show();
+    }
+
+    //function checkAnswer() {
+    //    $(".answer").on('click', function () {
+    //        numberAnswered++;
+    //        (".answer")
+    //    })
+    //}
+
+    function rightAnswer() {
+        numberCorrect++;
+        alert('CORRECT! ' + questionA[numberAnswered].answer);
+    }
+
+    function wrongAnswer() {
+        numberWrong++;
+        alert('INCORRECT. The correct answer was: ' + questionA[numberAnswered].answer);
+    }
+
+    function endScreen() {
+        $('.question').empty();
+        $('.question').append('<h2>' + numberCorrect + ' correct answers</h2>');
+        $('.question').append('<h2>' + numberWrong + ' incorrect answers</h2>');
+        timer.stop();
+        $('.timer').hide();
+    }
+
+    setup();
+    $('.answer').on('click', function() {
+        console.log($(this));
+
+        if (this.id == 'buttona'){
+             answerChosen = 'a';
+        } else if (this.id == 'buttonb'){
+             answerChosen = 'b';
+        } else if (this.id == 'buttonc'){
+             answerChosen = 'c';
+        } else if (this.id == 'buttond'){
+             answerChosen = 'd';
+        }
+
+        if ((answerChosen == 'a') && (questionA[numberAnswered].check[0] == true)) {
+            rightAnswer();
+        } else if ((answerChosen == 'a') && (questionA[numberAnswered].check[0] == false)) {
+            wrongAnswer();
+        }
+
+        if ((answerChosen == 'b') && (questionA[numberAnswered].check[1] == true)) {
+            rightAnswer();
+        } else if ((answerChosen == 'b') && (questionA[numberAnswered].check[1] == false))  {
+            wrongAnswer();
+        }
+
+        if ((answerChosen == 'c') && (questionA[numberAnswered].check[2] == true)) {
+            rightAnswer();
+        } else if ((answerChosen == 'c') && (questionA[numberAnswered].check[2] == false)) {
+            wrongAnswer();
+        }
+
+        if ((answerChosen == 'd') && (questionA[numberAnswered].check[3] == true)) {
+            rightAnswer();
+        } else if ((answerChosen == 'd') && (questionA[numberAnswered].check[3] == false)) {
+            wrongAnswer();
+        }
+
+        $('.question').text('');
+        $('#buttona').text('');
+        $('#buttonb').text('');
+        $('#buttonc').text('');
+        $('#buttond').text('');
+        numberAnswered++;
+
+        if (numberAnswered < questionA.length) {
+            getQuestion(numberAnswered);
+        } else {
+            $(".answer").hide();
+            endScreen();
+        }
+    })
+});
