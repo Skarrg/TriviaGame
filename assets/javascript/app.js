@@ -16,10 +16,10 @@ $(document).ready(function () {
     }
 
     var timer = {
-        time: 15,
+        time: 30,
 
         reset: function () {
-            this.time = 15;
+            this.time = 30;
             $('.timer').html('<h2>' + timer.time + ' seconds remaining!</h2>');
         },
 
@@ -33,7 +33,7 @@ $(document).ready(function () {
 
         count: function () {
             timer.time--;
-            if (timer.time >= 0) {
+            if (timer.time > 0) {
                 $('.timer').html('<h2>' + timer.time + ' seconds remaining!</h2>');
             }
             else {
